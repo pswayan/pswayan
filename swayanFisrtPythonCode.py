@@ -26,7 +26,7 @@ def upload_file():
     return jsonify({'message': 'File uploaded successfully'})
 
 # Define the route for downloading files
-@app.route('/download/<filename>')
+@app.route('/download/<filename>', methods=['POST'])
 def download_file(filename):
     # Check if the file exists
     if not os.path.exists(os.path.join(UPLOAD_FOLDER, filename)):
