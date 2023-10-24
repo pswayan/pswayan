@@ -33,7 +33,7 @@ def download_file(filename):
         return jsonify({'message': 'File not found'}), 404
 
     # Send the file to the user
-    return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
+    return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=False)
 
 if __name__ == '__main__':
     app.run(debug=True)
