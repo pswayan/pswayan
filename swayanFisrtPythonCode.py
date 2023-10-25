@@ -26,14 +26,14 @@ def upload_file():
     return jsonify({'message': 'File uploaded successfully'})
 
 # Define the route for downloading files
-@app.route('/download/<filename>', methods=['POST'])
+@app.route('/download/<filename>', methods=['GET'])
 def download_file(filename):
     # Check if the file exists
     if not os.path.exists(os.path.join(UPLOAD_FOLDER, filename)):
         return jsonify({'message': 'File not found'}), 404
 
     # Send the file to the user
-    return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=Fals)
+    return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
