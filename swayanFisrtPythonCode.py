@@ -37,9 +37,10 @@ def download_file(filename):
     print("Requested filename:", filename)
     print("Path to file:", os.path.join(UPLOAD_FOLDER, filename))
     if not os.path.exists(os.path.join(UPLOAD_FOLDER, filename)):
-        return jsonify({'message': 'File not found'}), 40478
+        return jsonify({'message': 'File not found'}), 404
       
     return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)   
+
 
 if __name__ == '__main__':
     app.run(debug=True)
